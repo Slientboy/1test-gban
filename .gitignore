@@ -120,3 +120,6 @@ config.py
 # Session files
 *.session
 *.session-journal
+
+# Logs
+log.txt

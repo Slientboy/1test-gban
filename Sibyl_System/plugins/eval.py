@@ -42,7 +42,7 @@ async def run(event):
     await event.reply(final + "`")
 
 
-@System.on(system_cmd(pattern = r"ssc (ev|eva|eval|py)"))
+@System.on(system_cmd(pattern=r"ssc (ev|eva|eval|py)"))
 async def run_eval(event):
     cmd = event.text.split(" ", 2)
     cmd = cmd[2] if len(cmd) > 2 else ""
@@ -66,13 +66,10 @@ async def async_exec(code, event):
 __plugin_name__ = "py"
 
 help_plus = """
-**Help for Python Script Kiddie Commands**
-
-__Run an simple Python script__
+Run code using **exec** 
 CMD - <x or ex or exec or execute> your code here
 EXAMPLE - `!ssc x print("OWO")`
-
-__Evalutating something or do math stuff__
+Run code using **eval**
 CMD - <ev or eva or eval or py> your code
 EXAMPLE - `!ssc eval 1 + 1`
 """
