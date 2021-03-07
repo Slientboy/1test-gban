@@ -35,9 +35,9 @@ INSPECTORS = [1634756943]
 
 # These intergers below are real chatids.
 # Replace it with your own chatids or the userbot will not start.
-Sibyl_logs = -1001293004442
-Sibyl_approved_logs = -1001274776877
-GBAN_MSG_LOGS = -1001274776877
+Sibyl_logs = -1001274776877
+Sibyl_approved_logs = 
+GBAN_MSG_LOGS = -1001293004442
 
 ########################################
 # IMPORTANT!                           #
