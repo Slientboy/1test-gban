@@ -25,7 +25,7 @@ try:
 except BaseException:
     HEROKU = False
 
-json_file = os.path.join(os.getcwd(), "Sibyl_System/elevated_users.json")
+json_file = os.path.join(os.getcwd(), "Sibyl_System\\elevated_users.json")
 
 
 @System.on(system_cmd(pattern=r"addenf", allow_inspectors=True))
@@ -42,10 +42,10 @@ async def addenf(event) -> None:
             u_id = (await System.get_entity(u_id)).id
         except BaseException:
             await event.reply(
-                "I haven't interacted with that user! Fine, will add them anyway."
+                "I haven't interacted with that user! Meh, Will add them anyway"
             )
     if u_id in ENFORCERS:
-        await System.send_message(event.chat_id, "That person is already promoted as an agent!")
+        await System.send_message(event.chat_id, "That person is already Enforcer!")
         return
     if HEROKU:
         config["ENFORCERS"] = os.environ.get("ENFORCERS") + " " + str(u_id)
@@ -81,7 +81,7 @@ async def rmenf(event) -> None:
         await event.reply("Invalid ID/Username!")
     u_id = int(u_id)
     if u_id not in ENFORCERS:
-        await System.send_message(event.chat_id, "Is that person even a agent?")
+        await System.send_message(event.chat_id, "Is that person even a Enforcer?")
         return
     if HEROKU:
         str(u_id)
@@ -135,7 +135,7 @@ async def join(event) -> None:
         await System.send_message(event.chat_id, "Joined chat!")
         await System.send_message(
             Sibyl_logs,
-            f"{(await event.get_sender()).first_name} made Spam Samples Collector join {private.group(5)}",
+            f"{(await event.get_sender()).first_name} made Sibyl join {private.group(5)}",
         )
     else:
         await System(JoinChannelRequest(link))
@@ -162,7 +162,7 @@ async def addins(event) -> None:
         await event.reply("Ivalid ID/Username!")
         return
     if u_id in INSPECTORS:
-        await System.send_message(event.chat_id, "That person is already an operator/staff!")
+        await System.send_message(event.chat_id, "That person is already an Inspector!")
         return
     if HEROKU:
         config["INSPECTORS"] = os.environ.get("INSPECTORS") + " " + str(u_id)
@@ -281,11 +281,11 @@ async def leave(event) -> None:
     if c_id:
         await System(LeaveChannelRequest(int(c_id.group(0))))
         await System.send_message(
-            event.chat_id, f"Spam Samples Collector has left chat with id[-{c_id.group(1)}]"
+            event.chat_id, f"Sibyl has left chat with id[-{c_id.group(1)}]"
         )
     else:
         await System(LeaveChannelRequest(link))
-        await System.send_message(event.chat_id, f"Spam Samples Collector has left the chat [{link}]")
+        await System.send_message(event.chat_id, f"Sibyl has left chat[{link}]")
 
 
 @System.on(system_cmd(pattern=r"get_redirect ", allow_inspectors=True))
@@ -301,9 +301,7 @@ async def redirect(event) -> None:
 
 
 help_plus = """
-**Help for Extras**
-
-__Managing enforcers and inspectors__
+Help!
 `addenf` - Adds a user as an enforcer.
 Format : addenf <user id / as reply>
 `rmenf` - Removes a user from enforcers.
@@ -314,19 +312,14 @@ Format : addins <user id / as reply>
 `rmins` - Removes a user from Inspector.
 Format : rmins <user id / as reply>
 `inspector` - Lists all inspectors.
-
-__Managing chats__
 `join` - Joins a chat.
 Format : join <chat username or invite link>
 `leave` - Leaves a chat.
 Format : leave <chat username or id>
-
-__Resolvers OwO__
 `resolve` - Resolve a chat invite link.
 Format : resolve <chat invite link>
 `get_redirect` - Follows redirect of a link.
 Format : get_redirect <URL>
-
 **Notes:**
 `/` `?` `.` `!` are supported prefixes.
 **Example:** `/addenf` or `?addenf` or `.addenf`
