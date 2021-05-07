@@ -1,7 +1,7 @@
 """Gets ENV vars or Config vars then calls class."""
 
 from telethon import events
-from telethon.sessions import String_Session
+from telethon.sessions import StringSession
 
 from motor import motor_asyncio
 import aiohttp
