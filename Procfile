@@ -1,1 +1,1 @@
-worker: ./spsmcollector-cli heroku
+worker: python3 -m Sibyl_System
